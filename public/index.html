@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login || Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="registration-form">
+            <div class="form-container">
+                <h1>Registration Form</h1>
+                <div class="form-input-row">
+
+                        <div><label for="userName">Name</label>
+                            <input type="text" id="userName" placeholder="First name">
+                            <h3 id="error"></h3>
+                        </div>
+                        <div><label for="lastName">Last name</label>
+                            <input type="text" id="lastName" placeholder="Last name">
+                            <h3 id="lastNameError"></h3>
+                        </div>
+                        <div><label for="email">Email</Email>
+                                <input type="email" placeholder="email" id="email">
+                                <h3 id="emailError"></h3>
+                            </div>
+                        <div> <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="password">
+                            <h3 id="passwordError"></h3>
+                        </div>
+                        <div>
+                            <button class="btn" onclick="register()">Register</button>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
