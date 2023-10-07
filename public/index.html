@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login || Form</title>
+    <title>Register || page</title>
 </head>
 
 <body>
@@ -27,8 +27,9 @@
                                 <h3 id="emailError"></h3>
                             </div>
                         <div> <label for="password">Password</label>
-                            <input type="password" id="password" placeholder="password">
+                            <input type="password" id="password" placeholder="password" onkeyup="myFunction()">
                             <h3 id="passwordError"></h3>
+                            <h3 id="passGenrator"></h3>
                         </div>
                         <div>
                             <button class="btn" onclick="register()">Register</button>
