@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="login.css">
     <title>Login || Page</title>
 </head>
+
 <body>
     <div class="conatiner">
-        <div class="login-container">
-            <h1>Login page</h1>
-            <div class="text-section">
-                <div>
-                    <label for="email">Email</label>
-                <input type="text" id="email" autofocus placeholder="Email">
-                <h3 id="emailError"></h3>
+        <div class="login-section">
+            <div class="login-container">
+                <div><img src="../src/login.png" width="60" alt=""></div>
+                <h1>Login</h1>
+                <div class="text-section">
+                    <div>
+                       <span class="fa-solid fa-envelope"></span> <input type="text" id="email" autofocus placeholder="Email">
+                        <h3 id="emailError"></h3>
+                    </div>
+                    <div>
+                       <span class="fa-solid fa-lock"></span> <input type="password" id="password" placeholder="password">
+                        <h3 id="passwordError"></h3>
+                    </div>
+                    <div>
+                        <button class="btn" onclick="login()">Login </button>
+                    </div>
+     <div class="links">
+        <div> <a href="forgot.html" >Forgot your password?</a></div>
+       <div><a href="adminPanel.html" target="_blank">adminpanel login</a></div>
+     </div>
+     <div class="sing-upp"><span>Create Account</span><a href="index.html">Sign Up!</a>
+    </div>
                 </div>
-                <div>
-                    <label for="password">Password</label>
-                <input type="password" id="password" placeholder="password">
-                <h3 id="passwordError"></h3>
-                </div>
-                <div>
-                    <button  class="btn" onclick="login()">click to login </button>
-                </div>
-                
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

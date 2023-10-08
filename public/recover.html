@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recover || Password</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="recover-section">
+            <div class="recover-container">
+                <div id="message-section"></div>
+                <div>
+                    <img src="../src/password.png" width="70">
+                </div>
+                <div>
+                    <h1>Recover Your Password !!</h1>
+                </div>
+                <div>
+                    <ul>
+                        <li><input type="password" id="password" placeholder="Enter New Password "></li>
+                        <h3 id="passwordError"></h3>
+                    </ul>
+                    <ul>
+                        <li><input type="password" id="ConformPassword" placeholder="Conform Password "></li>
+                        <h3 id="conformPassword"></h3>
+                    </ul>
+                    <button id="submit" onclick="recover()">Recover !!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function recover() {
+            let password = document.getElementById("password").value.trim();
+            let ConformPassword = document.getElementById("ConformPassword").value.trim();
+
+            //for password validation
+            if (password == "") {
+                document.getElementById("passwordError").innerText = "password should not be empty!!";
+                document.getElementById("passwordError").style.color = "red";
+                document.getElementById("passwordError").style.fontSize = ".9rem";
+            }
+
+            //for conformPassword validation
+            if (ConformPassword == "") {
+                document.getElementById("conformPassword").innerText = "conformPassword should not be empty!!";
+                document.getElementById("conformPassword").style.color = "red";
+                document.getElementById("conformPassword").style.fontSize = ".9rem";
+            }
+            if (password == ConformPassword) {
+                // get the value from localStorage and we check the conditions
+
+                let studentsData = localStorage.getItem("studentDetail")
+                let final = JSON.parse(studentsData)
+                for (let i = 0; i < final.length; i++) {
+                    let updatePassword = final[i].password;
+                    ConformPassword == updatePassword;
+                let message =document.getElementById("message-section");
+                message.innerHTML ="<h1>Your Password has been Changed</h1>"
+                message.style.backgroundColor="green";
+                message.style.color="white";
+                message.style.width="30%";
+                message.style.height="3rem";
+                message.style.fontSize=".6rem";
+                message.style.textAlign="center"
+                message.style.paddingTop=".2rem";
+
+
+                }
+            } else {
+                alert("password does not match")
+            }
+return recover;
+
+        }
+    </script>
+</body>
+
+</html>

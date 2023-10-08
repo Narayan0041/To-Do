@@ -1,0 +1,87 @@
+:root {
+    --white-color: white;
+    --body-color: rgb(227, 227, 238);
+    --blue-color: rgb(26, 114, 187);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    text-align: all .2s linear;
+}
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+}
+body{
+    background-color:var(--body-color) ;
+}
+.forgot-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 7rem;
+    align-items: center;
+}
+.forgot-containet{
+    width: 25rem;
+    height: 30rem;
+    border-radius: .5rem;
+    background-color: var(--white-color);
+}
+.forgot-containet img{
+    margin-top: 3rem;
+    margin-left: 40%;
+}
+.forgot-containet h1{
+    margin-top: 1.5rem;
+    margin-left: 15%;
+    font-size: 1.5rem;
+}
+.input-section ul li{
+    list-style: none;
+}
+.input-section {
+    margin-top: 1.5rem;
+}
+.input-section input{
+height: 3rem;
+width: 70%;
+border-radius: .3rem;
+background-color: var(--body-color);
+outline: none;
+border: none;
+margin-top: 1rem;
+margin-left: 10%;
+font-size: 1rem;
+padding-left: 2.5rem;
+}
+.input-section button{
+    border-radius: .2rem;
+    background-color: rgb(215, 54, 10);
+    margin-top: 2rem;
+    height: 2.3rem;
+    width: 8rem;
+    border: none;
+    margin-left: 3rem;
+}
+.input-section #cancel{
+    border: 2px solid gray;
+    background-color: transparent;
+}
+.input-section span{
+    position: relative;
+    left: 4.2rem;
+}
+.login {
+    margin-top: 2.5rem;
+}
+.login span{
+    font-size: 1rem;
+    margin-left: 30%;
+    margin-right: .5rem;
+}

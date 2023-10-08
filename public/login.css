@@ -1,0 +1,101 @@
+:root {
+    --white-color: white;
+    --body-color: rgb(227, 227, 238);
+    --blue-color: rgb(26, 114, 187);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    text-align: all .2s linear;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+.login-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.login-container{
+    border-radius: .3rem;
+    width: 25rem;
+    height: 35rem;
+    box-shadow: 5px 7px -2px rgb(0,0,0,.5);
+    background-color: var(--white-color);
+}
+.login-container img{
+    margin-top: 3rem;
+    margin-left: 40%;
+}
+.login-container h1{
+    color: var(--blue-color);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 40%;
+    margin-top: 2rem;
+}
+.login-container .text-section span{
+    position: relative;
+    left: 3rem;
+}
+.login-container .text-section input{
+    border: none;
+    border-radius: .2rem;
+    background-color: var(--body-color);
+    height: 3rem;
+    font-size: 1rem;
+    padding-left: 2.5rem;
+    width: 80%;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+.login-container .text-section button{
+    height: 2.5rem;
+    width: 8rem;
+    margin-top: 2rem;
+    margin-left: 33%;
+    font-weight: 700;
+    border-radius: 1.5rem;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    margin-top: 2rem;
+}
+.links a{
+font-size: 1rem;
+color: red;
+}
+.sing-upp{
+    margin-left: 15%;
+    margin-top: 2.5rem;
+}
+.sing-upp span{
+  font-size: .9rem;
+  color: black;
+  margin-right: 3.5rem;
+}
+.sing-upp a{
+    color: var(--blue-color);
+}

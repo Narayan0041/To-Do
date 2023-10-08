@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="forgot.css">
+    <title>Forgot || Password</title>
+</head>
+
+<body>
+    <div class="conatiner">
+        <div class="forgot-section">
+            <div class="forgot-containet">
+                <div>
+                    <img src="../src/forgot-password.png" width="50">
+                </div>
+                <div>
+                    <h1>Forgot your Password ??</h1>
+                </div>
+                <div class="input-section">
+                    <ul>
+                        <li><span class="fa-solid fa-user"></span><input type="text" id="firstName" placeholder="First Name..."></li>
+                        <li><span class="fa-solid fa-envelope"></span><input type="text" id="Email" placeholder="Enter your Email"> </li>
+                    </ul>
+                    <button id="cancel" onclick="cancel()">Cancel</button>
+                    <button id="Reset" onclick="reset()">Reset</button>
+                </div>
+                <div class="login">
+                    <span>You want login</span><a href="login.html">login now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function cancel() {
+            window.location.href = "forgot.html"
+            console.log("cancel click hua")
+        }
+        function reset() {
+            let fistName = document.getElementById("firstName").value.trim();
+            let Email = document.getElementById("Email").value.trim();
+            console.log("click")
+
+            // get the value from localStorage and we check the conditions
+
+            let studentsData = localStorage.getItem("studentDetail")
+            let final = JSON.parse(studentsData)
+            for(let i=0;i<final.length;i++){
+                
+                if(fistName ==final[i].firstName && lastName == final[i].lastName && Email == final[i].email){
+                   window.location.href="recover.html";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
