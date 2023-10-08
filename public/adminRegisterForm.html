@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/add-user.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="adminRegisterForm.css">
+    <title>Admin Register || Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="registration-form">
+            <div class="lef-container">
+                <div >
+                    <h1>Welcome, Administrator!</h1>
+                    <p>Manage with confidence and control.</p>  
+                    <button id="submit" onclick="signInToAdminLogin()"><span>Sign in</span></button>
+                </div>
+            </div>
+            <div class="form-container">
+                <div><img src="../src/add-user.png" alt="add-user" width="70"></div>
+                <h1>Register Admin</h1>
+                <div class="form-input-row">
+
+                        <div>
+                            <span  class="fa-solid fa-user"></span><input type="text" id="userName" placeholder="First Name">
+                            <h3 id="error"></h3>
+                        </div>
+                        <div>
+                            <span class="fa-solid fa-envelope"></span><input type="email" placeholder="Email" id="email">
+                                <h3 id="emailError"></h3>
+                            </div>
+                        <div>
+                            <span class="fa-solid fa-lock"></span><input type="password" id="password" placeholder="password" onkeyup="myFunction()">
+                            <h3 id="passwordError"></h3>
+                            <h5 id="passGenrator"></h5>
+                        </div>
+                        <div>
+                            <button class="btn" onclick="registeradmin()">Sign up</button>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 
+-------------------------------------------------javscript section start----------------------------------------- -->
+
+    <script>
+        // -----------------------------------------store the data inside the admin-----------------------------------
+        const admin = []
+
+// -----------------------------------------genrate_password start here------------------------------------------------
+let char = ["@", "#", "&", "!", "#", "%"]
+// let password = document.getElementById("password").value.trim();
+
+// onkeyup function
+function myFunction() {
+    let securePassword = Math.floor(Math.random() * 100000);
+    let chat = char[Math.floor(Math.random() * 6)]
+    document.getElementById("passGenrator").style.display = "block"
+    let input = document.getElementById("userName").value.trim();
+    let up = input.charAt(0).toUpperCase();
+    let slice = input.slice(1)
+    let final = up + slice + chat + securePassword;
+    if (final.length >= 10) {
+    } else {
+        console.log("your should more then 10 digit")
+    }
+    let genrate_pass = document.getElementById("passGenrator")
+    genrate_pass.innerHTML = "<h2>Suggestion strong password</h2>" + final;
+    genrate_pass.style.marginLeft ="2rem";
+    genrate_pass.style.marginTop ="1rem"
+}
+// ---------------------------------------sign in link--------------------------------------------
+function signInToAdminLogin() {
+    window.location.href = "adminForm.html"
+}
+
+// ----------------------------------------function to register admin--------------------------
+        function registeradmin(event) {
+    let firstName = document.getElementById("userName").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    //for FirstName validation
+    if (firstName == "") {
+        document.getElementById("error").innerText = "firstName should not be empty !!";
+        document.getElementById("error").style.color = "red";
+        document.getElementById("error").style.fontSize = ".9rem";
+        document.getElementById("error").style.marginLeft = "1.2rem";
+        document.getElementById("error").style.marginTop = ".5rem";
+    }
+
+    //for email validation
+    if (email == "") {
+        document.getElementById("emailError").innerText = "Email should not be empty!!";
+        document.getElementById("emailError").style.color = "red";
+        document.getElementById("emailError").style.fontSize = ".9rem";
+        document.getElementById("emailError").style.marginLeft = "1.2rem";
+        document.getElementById("emailError").style.marginTop = ".5rem";
+    }
+
+    //for password validation
+    if (password == "") {
+        document.getElementById("passwordError").innerText = "password should not be empty and more 8 digit!!";
+        document.getElementById("passwordError").style.color = "red";
+        document.getElementById("passwordError").style.fontSize = ".9rem";
+        document.getElementById("passwordError").style.marginLeft = "1.5rem";
+        document.getElementById("passwordError").style.margintop = ".7rem";
+    }
+    if (password.length <= 8) {
+        document.getElementById("passwordError").innerHTML = "Password should more thane 8 digit";
+        document.getElementById("passwordError").style.color = "red"
+        console.log("Password should more than 8 digit");
+    }
+
+    //write the condition for register 
+    if (firstName && email && password) {
+        var id = admin + 1;
+        admin.push({ firstName: firstName, email: email, password: password, id: id })
+        let str = JSON.stringify(admin);
+        localStorage.setItem("admin", str)
+        alert("You are the Register Succesfully")
+        clear()
+    }
+    console.log("You are the Register Succesfully")
+}
+
+
+
+// clear function 
+function clear() {
+    let firstName = document.getElementById("userName").value = "";
+    let email = document.getElementById("email").value = "";
+    let password = document.getElementById("password").value = "";
+    document.getElementById("passGenrator").style.display = "none"
+}
+    </script>
+</body>
+</html>

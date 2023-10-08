@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root {
+    --white-color: white;
+    --body-color: rgb(227, 227, 238);
+    --blue-color: rgb(26, 114, 187);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    text-align: all .2s linear;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--body-color);
+}
+.adminForm-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+}
+.adminForm-container{
+    height: 28rem;
+    width: 25rem;
+    border-radius: .5rem;
+    background-color: var(--white-color);
+}
+.adminForm-container img{
+    margin-top: 3rem;
+    margin-left: 40%;
+}
+.adminForm-container h1{
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    margin-left: 35%;
+}
+.adminForm-container .input-section input{
+    height: 3rem;
+    width: 70%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    margin-left:10%;
+    background-color: var(--body-color);
+    padding-left:2rem;
+}
+.adminForm-container .input-section span{
+    position: relative;
+    left: 4.2rem;
+}
+.adminForm-container button{
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: .9rem;
+    margin-top: 2rem;
+    margin-left: 7.5rem;
+    font-weight: 700;
+    background-color: rgb(8, 218, 8);
+    width: 40%;
+    border-radius: 1.5rem;
+}
+.adminForm-container h2{
+    margin-top: .8rem;
+    margin-left: 25%;
+    font-size: 1rem;
+}
+.adminForm-container h2 a{
+    color: var(--blue-color);
+    margin-left: .5rem;
+}
+.adminForm-container h2 a:hover{
+    text-decoration: underline;
+}

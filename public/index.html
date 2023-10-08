@@ -1,51 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/src/checklist.png" type="image/x-icon">
+    <title>Todo List || Your Adds and Daily Note</title>
     <link rel="stylesheet" href="index.css">
-    <title>Register || page</title>
 </head>
-
 <body>
-    <div class="container">
-        <div class="registration-form">
-            <div class="lef-container">
-                <div >
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us phoneloging with your personal info</p>
-                    <button id="submit" onclick="signIn()"><span>Sign in</span></button>
-                </div>
+    <header>
+        <nav class="navbar">
+            <div class="logo-section">
+                <img src="../src/increase.png">
+                <h1>Narayan</h1>
             </div>
-            <div class="form-container">
-                <div><img src="../src/add-user.png" alt="add-user" width="70"></div>
-                <h1>Create Account</h1>
-                <div class="form-input-row">
-
-                        <div>
-                            <span  class="fa-solid fa-user"></span><input type="text" id="userName" placeholder="First Name">
-                            <h3 id="error"></h3>
-                        </div>
-                        <div>
-                            <span class="fa-solid fa-envelope"></span><input type="email" placeholder="Email" id="email">
-                                <h3 id="emailError"></h3>
-                            </div>
-                        <div>
-                            <span class="fa-solid fa-lock"></span><input type="password" id="password" placeholder="password" onkeyup="myFunction()">
-                            <h3 id="passwordError"></h3>
-                            <h5 id="passGenrator"></h5>
-                        </div>
-                        <div>
-                            <button class="btn" onclick="register()">Sign up</button>
-                        </div>
-                   
-                </div>
+            <div>   
+               <a href="registerUser.html" class="link">Sign In</a>
             </div>
-        </div>
+        </nav>
+    </header>
+    <div class="sub-container">
+   <div class="container">
+    <div class="index-file">
+        <input type="text" id="text" placeholder="Enter Here">
+        <button class="btn" id="btn">Click Me!!</button>
     </div>
-    <script src="script.js"></script>
+    <div class="list-Task" id="list-Task">
+        <h1>Your Today <span> Task Are:</span> </h1>
+        <ul></ul>
+    </div>
+   </div> 
+</div>
 </body>
-
+<script src="index.js"></script>
 </html>

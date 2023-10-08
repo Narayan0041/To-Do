@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/forgot-password.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="forgot.css">
     <title>Forgot || Password</title>
@@ -21,8 +22,13 @@
                 </div>
                 <div class="input-section">
                     <ul>
-                        <li><span class="fa-solid fa-user"></span><input type="text" id="firstName" placeholder="First Name..."></li>
-                        <li><span class="fa-solid fa-envelope"></span><input type="text" id="Email" placeholder="Enter your Email"> </li>
+                        <li><span class="fa-solid fa-user"></span><input type="text" id="firstName" placeholder="First Name...">
+                        <h3 id="firstNameError"></h3>
+                    </li>
+
+                        <li><span class="fa-solid fa-envelope"></span><input type="email" id="Email" placeholder="Enter your Email"> 
+                            <h3 id="emailError"></h3>
+                        </li>
                     </ul>
                     <button id="cancel" onclick="cancel()">Cancel</button>
                     <button id="Reset" onclick="reset()">Reset</button>
@@ -43,7 +49,23 @@
         function reset() {
             let fistName = document.getElementById("firstName").value.trim();
             let Email = document.getElementById("Email").value.trim();
-            console.log("click")
+            //for firstNAme validation
+    if (fistName == "") {
+        console.log("ck")
+        document.getElementById("firstNameError").innerHTML = "Email should not be empty!!";
+        document.getElementById("firstNameError").style.color = "red";
+        document.getElementById("firstNameError").style.fontSize = ".8rem";
+        document.getElementById("firstNameError").style.marginLeft = "4.4rem";
+        document.getElementById("firstNameError").style.margintop = "1.2rem";
+    }
+    //for emailvalidation
+    if (Email == "") {
+        document.getElementById("emailError").innerText = "password should not be empty!!";
+        document.getElementById("emailError").style.color = "red";
+        document.getElementById("emailError").style.fontSize = ".8rem";
+        document.getElementById("emailError").style.marginLeft = "4.4rem";
+        document.getElementById("emailError").style.margintop = "1.2rem";
+    }
 
             // get the value from localStorage and we check the conditions
 
@@ -51,7 +73,7 @@
             let final = JSON.parse(studentsData)
             for(let i=0;i<final.length;i++){
                 
-                if(fistName ==final[i].firstName && lastName == final[i].lastName && Email == final[i].email){
+                if(fistName ==final[i].firstName && Email == final[i].email){
                    window.location.href="recover.html";
                 }
             }

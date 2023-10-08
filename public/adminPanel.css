@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-:root{
-    --body-color:rgb(203, 203, 219);
-    --secondary-color:rgb(86, 50, 193);
-    --white-color:white;
+:root {
+    --body-color: rgb(203, 203, 219);
+    --secondary-color: rgb(86, 50, 193);
+    --white-color: white;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,20 +15,24 @@
     font-family: 'Raleway', sans-serif;
     text-align: all .2s linear;
 }
-html{
+
+html {
     scroll-behavior: smooth;
     scroll-padding-top: 7px;
     overflow-x: hidden;
 }
-body{
-    background-color:var(--white-color) ;
+
+body {
+    background-color: var(--white-color);
 }
-.margin-add{
+
+.margin-add {
     margin-left: 2rem;
 }
+
 /* -------------------------------------------left section start--------------------------- */
-.left-adminPanel{
-    position:fixed;
+.left-adminPanel {
+    position: fixed;
     left: 0;
     top: 0;
     flex: 1;
@@ -36,13 +41,16 @@ body{
     z-index: 100;
     background-color: var(--body-color);
 }
-.left-adminPanel .logo-section{
+
+.left-adminPanel .logo-section {
     margin-top: .5rem;
 }
-.left-adminPanel .logo-section img{
-width: 2.3rem;
+
+.left-adminPanel .logo-section img {
+    width: 2.3rem;
 }
-.left-adminPanel .logo-section h1{
+
+.left-adminPanel .logo-section h1 {
     position: relative;
     font-size: 2rem;
     top: .2rem;
@@ -50,30 +58,35 @@ width: 2.3rem;
     text-align: center;
     display: inline-block;
 }
-.left-menu-section{
+
+.left-menu-section {
     margin-top: 2rem;
 }
-.left-menu-section span{
+
+.left-menu-section span {
     display: inline-block;
     padding-right: 1rem;
 }
-.left-menu-section ul{
+
+.left-menu-section ul {
     height: 3.5rem;
     width: 100%;
 }
 
-.left-menu-section li{
+.left-menu-section li {
     width: 100%;
     margin-top: 2rem;
     list-style: none;
 }
-.left-menu-section li a{
-   display: block;
+
+.left-menu-section li a {
+    display: block;
     top: 1rem;
     padding-left: 2rem;
     text-decoration: none;
 }
-.left-menu-section li a.active{
+
+.left-menu-section li a.active {
     background: var(--white-color);
     padding-top: 1rem;
     padding-right: 2rem;
@@ -83,16 +96,18 @@ width: 2.3rem;
     color: var(--secondary-color);
     border-radius: 1.2rem 0 0 1.2rem;
 }
-.left-menu-section li a span:first{
+
+.left-menu-section li a span:first {
     font-size: 1.5rem;
     padding-right: 1rem;
 }
 
 /* -----------------------------------------right-container section--------------------------- */
-.right-adminPanel{
-   margin-left: 15rem;
+.right-adminPanel {
+    margin-left: 15rem;
 }
-.right-adminPanel .header{
+
+.right-adminPanel .header {
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
@@ -103,47 +118,56 @@ width: 2.3rem;
     top: 0;
     z-index: 100;
 }
-.right-adminPanel .header a{
+
+.right-adminPanel .header a {
     text-decoration: none;
-font-size: 1.3rem;
-font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
-.right-adminPanel .header span{
+
+.right-adminPanel .header span {
     font-size: 1.1rem;
     margin-right: .5rem;
 }
-.right-adminPanel .search-box{
+
+.right-adminPanel .search-box {
     height: 2.5rem;
     padding-left: .5rem;
-    padding: .1rem ;
+    padding: .1rem;
     border-radius: 1rem;
-border: 1px solid gray;
+    border: 1px solid gray;
 }
-.right-adminPanel .search-box span{
-    margin-right: 1rem;
+
+.right-adminPanel .search-box span {
+    margin-right: .5rem;
 }
-.right-adminPanel input{
+
+.right-adminPanel input {
     font-size: 1rem;
     height: 100%;
     background: transparent;
     border: none;
-    
+
 }
-.right-adminPanel .user{
+
+.right-adminPanel .user {
     display: flex;
 
 }
-.right-adminPanel .user img{
+
+.right-adminPanel .user img {
     border-radius: 50%;
     margin-right: 1rem;
 }
-.right-adminPanel .user h1{
+
+.right-adminPanel .user h1 {
     font-size: 1rem;
     font-weight: 600;
 }
-.right-adminPanel .user small{
-   position: relative;
-   bottom: .7rem;
+
+.right-adminPanel .user small {
+    position: relative;
+    bottom: .7rem;
     display: inline-block;
     color: gray;
 }
@@ -151,17 +175,19 @@ border: 1px solid gray;
 
 /* --------------------------------------- main-container-------------------------------------- */
 
-.main-conatiner{
+.main-conatiner {
     margin-top: 5rem;
     padding: 2rem 1.5rem;
 }
-.main-conatiner .cards{
+
+.main-conatiner .cards {
     display: flex;
     margin-top: 2rem;
     justify-content: space-evenly;
     grid-gap: 2rem;
 }
-.main-conatiner .card-single{
+
+.main-conatiner .card-single {
     display: flex;
     width: 20rem;
     border-radius: .5rem;
@@ -169,7 +195,8 @@ border: 1px solid gray;
     justify-content: space-between;
     background: var(--body-color);
 }
-.main-conatiner .card-single span:first-child{
+
+.main-conatiner .card-single span:first-child {
     margin-right: 2rem;
     padding-left: 1.5rem;
     font-size: 1.5rem;

@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="recover.css">
     <title>Recover || Password</title>
 </head>
 
@@ -11,7 +15,6 @@
     <div class="container">
         <div class="recover-section">
             <div class="recover-container">
-                <div id="message-section"></div>
                 <div>
                     <img src="../src/password.png" width="70">
                 </div>
@@ -20,14 +23,21 @@
                 </div>
                 <div>
                     <ul>
-                        <li><input type="password" id="password" placeholder="Enter New Password "></li>
+                        <li><span class="fa-solid fa-lock"></span><input type="password" id="password"
+                                placeholder="Enter New Password "></li>
                         <h3 id="passwordError"></h3>
                     </ul>
                     <ul>
-                        <li><input type="password" id="ConformPassword" placeholder="Conform Password "></li>
+                        <li><span class="fa-solid fa-lock"></span><input type="password" id="ConformPassword"
+                                placeholder="Conform Password "></li>
                         <h3 id="conformPassword"></h3>
                     </ul>
+                    <div id="message-section"></div>
                     <button id="submit" onclick="recover()">Recover !!</button>
+                </div>
+                <div class="links">
+                    <h3>You go back to <a href="login.html">Login page</a>
+                        </h3>
                 </div>
             </div>
         </div>
@@ -59,23 +69,34 @@
                 for (let i = 0; i < final.length; i++) {
                     let updatePassword = final[i].password;
                     ConformPassword == updatePassword;
-                let message =document.getElementById("message-section");
-                message.innerHTML ="<h1>Your Password has been Changed</h1>"
-                message.style.backgroundColor="green";
-                message.style.color="white";
-                message.style.width="30%";
-                message.style.height="3rem";
-                message.style.fontSize=".6rem";
-                message.style.textAlign="center"
-                message.style.paddingTop=".2rem";
-
-
+                    let success = document.getElementById("message-section");
+                    success.innerHTML = "Your Password has been Changed"
+                    success.style.backgroundColor = "green"
+                    success.style.margin = "1rem 1.7rem 0 3.5rem";
+                    success.style.height = "2.5rem"
+                    success.style.width = "75%";
+                    success.style.color = "white";
+                    success.style.fontSize = "1rem"
+                    success.style.fontWeight = "300"
+                    success.style.padding = ".5rem 1rem"
+                    success.style.borderRadius = ".2rem"
+                    setTimeout(() => {
+                        success.style.display = "none";
+                        clear();
+                    }, 2000)
+                    setTimeout(()=>{
+                        window.location.href ="login.html"
+                    },3500)
                 }
             } else {
                 alert("password does not match")
             }
-return recover;
+            return recover;
 
+        }
+        function clear() {
+            let password = document.getElementById("password").value = "";
+            let ConformPassword = document.getElementById("ConformPassword").value = "";
         }
     </script>
 </body>

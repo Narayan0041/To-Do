@@ -19,8 +19,8 @@ function myFunction() {
     }
     let genrate_pass = document.getElementById("passGenrator")
     genrate_pass.innerHTML = "<h2>Suggestion strong password</h2>" + final;
-    genrate_pass.style.marginLeft ="2rem";
-    genrate_pass.style.marginTop ="1rem"
+    genrate_pass.style.marginLeft = "2rem";
+    genrate_pass.style.marginTop = "1rem"
 }
 // ---------------------------------------sign in link--------------------------------------------
 function signIn() {
@@ -31,7 +31,6 @@ function signIn() {
 
 function register(event) {
     let firstName = document.getElementById("userName").value.trim();
-    // let lastName = document.getElementById("lastName").value.trim();
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
 
@@ -93,12 +92,6 @@ function clear() {
 
 
 
-
-
-
-
-
-
 //------------------loginPage section --------------------------
 
 function login() {
@@ -113,11 +106,11 @@ function login() {
         document.getElementById("emailError").style.margintop = "1.2rem";
     }
     //for password validation
-    else if (LoginPassword == "") {
+    if (LoginPassword == "") {
         console.log("pass")
         document.getElementById("passwordError").innerText = "password should not be empty and more 8 digit!!";
         document.getElementById("passwordError").style.color = "red";
-        document.getElementById("passwordError").style.fontSize = ".7rem";
+        document.getElementById("passwordError").style.fontSize = ".8rem";
         document.getElementById("passwordError").style.marginLeft = "2.7rem";
         document.getElementById("passwordError").style.margintop = "1.2rem";
     }
@@ -127,13 +120,28 @@ function login() {
         console.log("Password should more than 8 digit");
     }
 
+   
+    // get the data from the localStorage
+    let studentsData = localStorage.getItem("studentDetail")
+    let final = JSON.parse(studentsData)
+
     // check the condition wether the user are exits or not 
     for (let i = 0; i < final.length; i++) {
         if (final[i].email == LoginEmail && final[i].password == LoginPassword) {
+            window.location.href = "index.html";
             console.log("Password should match")
-            window.location.href = "index.html"
         }
         else {
+            let invalid =document.getElementById("invalid");
+            invalid.innerHTML ="A user with this email does not exist"
+            invalid.style.backgroundColor ="red"
+            invalid.style.margin="1rem 2rem 0 2rem";
+            invalid.style.height="2.5rem"
+            invalid.style.width="80%"
+            invalid.style.fontSize="1rem"
+            invalid.style.fontWeight="300"
+            invalid.style.padding=".5rem 1rem"
+            invalid.style.borderRadius=".2rem"
             console.log("match should not match")
         }
     }
@@ -145,55 +153,9 @@ function login() {
 
 
 
+
+
 // -------------------------------------------------------------adminPanel section ---------------------------------------------------
-// let adminName =prompt("Enter you name");
-// let adminpassword=prompt("Enter the password");
-
-// if(adminName =="shiv" && adminpassword=="narayan"){
-//     let students_section = document.getElementById("students-box-section");
-// let studentsData = localStorage.getItem("studentDetail")
-// let final =JSON.parse(studentsData)
-
-// window.addEventListener("load",()=>{
-//     var html = "<table border='1|1' class='table'>"
-//     setTimeout(() => {
-//         html += "<thead>";
-//         html += "<tr>";
-//         html += "<td>" + 'SNo.' + "</td>";
-//         html += "<td>" + 'first Name' + "</td>";
-//         html += "<td>" + 'last Name' + "</td>";
-//         html += "<td>" + 'Email' + "</td>";
-//         html += "<td>" + 'Action' + "</td>";
-//         html += "</tr>"
-//         html += "</thead>";
-//         for (let j = 0; j < final.length; j++) {
-//             var sno = j + 1;
-//             html += "<tr>";
-//             html += "<td>" + sno + "</td>";
-//             html += "<td>" + final[j].firstName + "</td>";
-//             html += "<td>" + final[j].lastName + "</td>";
-//             html += "<td>" + final[j].email + "</td>";
-//             html += "</tr>";
-//         }
-//         html += "</table>";
-//         students_section.innerHTML = html
-
-//     }, 200)
-//     console.log("page is loaded")
-
-// })
-//     console.log("yes your are Admin")
-// }
-// else{
-//     document.body.innerHTML ="Oops ! You are not a Admin...";
-//      document.body.style.marginTop ="10rem";
-//      document.body.style.backgroundColor ="black";
-//      document.body.style.color ="white";
-//      document.body.style.fontSize ="3rem"
-//      document.body.style.display ="flex"
-//      document.body.style.justifyContent ="center";
-
-// }
 
 let students_section = document.getElementById("students-box-section");
 

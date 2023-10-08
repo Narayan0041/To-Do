@@ -29,7 +29,7 @@ body{
 }
 .forgot-containet{
     width: 25rem;
-    height: 30rem;
+    padding-bottom: 2rem;
     border-radius: .5rem;
     background-color: var(--white-color);
 }
@@ -79,6 +79,9 @@ padding-left: 2.5rem;
 }
 .login {
     margin-top: 2.5rem;
+}
+.login a{
+    color: var(--blue-color);
 }
 .login span{
     font-size: 1rem;

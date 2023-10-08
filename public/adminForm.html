@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="adminForm.css">
+    <title>Admin panel || Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="adminForm-section">
+            <div class="adminForm-container">
+                <div>
+                    <img src="../src/unauthorized-person.png" width="60" alt="admin-logo">
+                </div>
+                <h1>Admin</h1>
+                <div class="input-section">
+                    <div>
+                        <span class="fa-solid fa-envelope"></span> <input type="email" placeholder="Email" id="email"
+                            style="margin-left: 34px;">
+                        <h3 id="emailError"></h3>
+                    </div>
+
+                    <div>
+                        <span class="fa-solid fa-lock"></span><input type="password" placeholder="password"
+                            id="password">
+                        <h3 id="passwordError"></h3>
+                    </div>
+                    <button id="Submit" onclick="adminLogin()">Login</button>
+                </div>
+                <div>
+                    <h2>Register the<a href="adminRegisterForm.html">Admin panel</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ------------------------------------adminPanel login-------------------------------------------------------------
+        function adminLogin() {
+            let adminEmail = document.getElementById("email").value.trim();
+            let adminPassword = document.getElementById("password").value.trim();
+            //for email validation
+            if (adminEmail == "") {
+                document.getElementById("emailError").innerText = "Email should not be empty!!";
+                document.getElementById("emailError").style.color = "red";
+                document.getElementById("emailError").style.fontSize = ".8rem";
+                document.getElementById("emailError").style.marginLeft = "4.2rem";
+                document.getElementById("emailError").style.margintop = "1.2rem";
+            }
+            //for password validation
+            if (adminPassword == "") {
+                console.log("pass")
+                document.getElementById("passwordError").innerText = "password should not be empty and more 8 digit!!";
+                document.getElementById("passwordError").style.color = "red";
+                document.getElementById("passwordError").style.fontSize = ".8rem";
+                document.getElementById("passwordError").style.marginLeft = "4.2rem";
+                document.getElementById("passwordError").style.margintop = "1.2rem";
+            }
+            else if (adminPassword.length <= 8) {
+                document.getElementById("passwordError").innerHTML = "Password should more thane 8 digit";
+                document.getElementById("passwordError").style.color = "red"
+                console.log("Password should more than 8 digit");
+            }
+
+            // get the data from the localStorage
+            let adminData = localStorage.getItem("admin")
+            let final = JSON.parse(adminData)
+
+            // check the condition wether the user are exits or not 
+            for (let i = 0; i < final.length; i++) {
+                if (final[i].email ==adminEmail  && final[i].password == adminPassword) {
+                    console.log("Password should match")
+                    window.location.href = "adminPanel.html"
+                }
+                else {
+                    console.log("match should not match")
+                }
+            }
+
+            console.log("admin login btn are clicked")
+
+        }
+
+    </script>
+</body>
+
+</html>
