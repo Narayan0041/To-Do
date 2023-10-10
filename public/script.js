@@ -1,4 +1,4 @@
-const studentDetail = []
+let studentDetail = []
 
 // -----------------------------------------genrate_password start here------------------------------------------------
 let char = ["@", "#", "&", "!", "#", "%"]
@@ -33,6 +33,7 @@ function register(event) {
     let firstName = document.getElementById("userName").value.trim();
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
+    let firstChar =firstName.charAt(0);
 
     //for FirstName validation
     if (firstName == "") {
@@ -42,7 +43,6 @@ function register(event) {
         document.getElementById("error").style.marginLeft = "1.2rem";
         document.getElementById("error").style.marginTop = ".5rem";
     }
-
     //for email validation
     if (email == "") {
         document.getElementById("emailError").innerText = "Email should not be empty!!";
@@ -69,6 +69,7 @@ function register(event) {
 
     //write the condition for register 
     if (firstName && email && password) {
+        let studentDetail = JSON.parse(localStorage.getItem("studentDetail"));
         var id = studentDetail.length + 1;
         studentDetail.push({ firstName: firstName, email: email, password: password, id: id })
         let str = JSON.stringify(studentDetail);
@@ -120,7 +121,7 @@ function login() {
         console.log("Password should more than 8 digit");
     }
 
-   
+
     // get the data from the localStorage
     let studentsData = localStorage.getItem("studentDetail")
     let final = JSON.parse(studentsData)
@@ -132,16 +133,16 @@ function login() {
             console.log("Password should match")
         }
         else {
-            let invalid =document.getElementById("invalid");
-            invalid.innerHTML ="A user with this email does not exist"
-            invalid.style.backgroundColor ="red"
-            invalid.style.margin="1rem 2rem 0 2rem";
-            invalid.style.height="2.5rem"
-            invalid.style.width="80%"
-            invalid.style.fontSize="1rem"
-            invalid.style.fontWeight="300"
-            invalid.style.padding=".5rem 1rem"
-            invalid.style.borderRadius=".2rem"
+            let invalid = document.getElementById("invalid");
+            invalid.innerHTML = "A user with this email does not exist"
+            invalid.style.backgroundColor = "red"
+            invalid.style.margin = "1rem 2rem 0 2rem";
+            invalid.style.height = "2.5rem"
+            invalid.style.width = "80%"
+            invalid.style.fontSize = "1rem"
+            invalid.style.fontWeight = "300"
+            invalid.style.padding = ".5rem 1rem"
+            invalid.style.borderRadius = ".2rem"
             console.log("match should not match")
         }
     }
@@ -165,7 +166,7 @@ let final = JSON.parse(studentsData)
 let window1 = window.addEventListener("load", () => {
     var html = "<table border='1|1' class='table'>"
     setTimeout(() => {
-        html += "<thead>";
+        html += "<thead id='table'>";
         html += "<tr>";
         html += "<td>" + 'SNo.' + "</td>";
         html += "<td>" + 'first Name' + "</td>";
@@ -184,11 +185,9 @@ let window1 = window.addEventListener("load", () => {
         }
         html += "</table>";
         students_section.innerHTML = html
-
         // noCustomer --------------------------------
-        let Ncustomer = document.getElementById("noCustomer");
-        Ncustomer.innerHTML = final.length;
-        console.log(Ncustomer)
+        let Nocustomer = document.getElementById("noCustomer");
+        Nocustomer.innerHTML = final.length;
 
     }, 200)
     console.log("page is loaded")
@@ -200,6 +199,7 @@ function removeItem(remove) {
     if (conf) {
         removeDataFromLocalStorage(id);
         console.log("click hu remove btn", id)
+        document.location.reload()
     }
 }
 
@@ -217,6 +217,23 @@ function removeDataFromLocalStorage(id) {
 function searched() {
     let search = document.getElementById("search").value;
     let SearchUpperCase = search.toUpperCase();
+    let myTable = document.getElementsByClassName("table")[0]
+    let tr = myTable.getElementsByTagName("tr");
+    for (let i = 0; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[1];
+        let email =tr[i].getElementsByTagName('td')[2];
 
-    console.log(SearchUpperCase)
+        if (td) {
+            let emailValue =email.textContent || email.innerHTML;
+            let textValue = td.textContent || td.innerHTML;
+            if (textValue.toUpperCase().indexOf(SearchUpperCase) > -1 || emailValue.toUpperCase().indexOf(SearchUpperCase) >-1) {
+               
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none"
+            }
+            //   if(textValue.toUpperCase())
+        }
+    }
+
 }

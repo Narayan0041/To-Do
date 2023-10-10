@@ -133,9 +133,13 @@ body {
 .right-adminPanel .search-box {
     height: 2.5rem;
     padding-left: .5rem;
-    padding: .1rem;
+    width: 40%;
+    padding: .1rem 0 .1rem .1rem;
     border-radius: 1rem;
     border: 1px solid gray;
+}
+.right-adminPanel .search-box input{
+    width: 90%;
 }
 
 .right-adminPanel .search-box span {

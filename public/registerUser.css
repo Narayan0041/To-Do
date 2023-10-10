@@ -32,7 +32,6 @@ body {
     align-items: center;
     margin: 5rem 22rem;
     border-radius: 1rem;
-    height: 70vh;
     background-color: var(--white-color);
     box-shadow: 5px 5px -5px rgba(0,0,0,0.4);
 }
