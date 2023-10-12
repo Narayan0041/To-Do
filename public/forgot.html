@@ -49,15 +49,16 @@
 
 
     <script>
+
         function cancel() {
             window.location.href = "forgot.html"
             console.log("cancel click hua")
         }
         function reset() {
-            let fistName = document.getElementById("firstName").value.trim();
+            let firstName = document.getElementById("firstName").value.trim();
             let Email = document.getElementById("Email").value.trim();
             //for firstNAme validation
-            if (fistName == "") {
+            if (firstName == "") {
                 document.getElementById("firstNameError").innerHTML = "Email should not be empty!!";
                 document.getElementById("firstNameError").style.color = "red";
                 document.getElementById("firstNameError").style.fontSize = ".8rem";
@@ -72,51 +73,57 @@
                 document.getElementById("emailError").style.marginLeft = "4.4rem";
                 document.getElementById("emailError").style.margintop = "1.2rem";
             }
-             
+
             // get the value from localStorage and we check the conditions
 
             let studentsData = localStorage.getItem("studentDetail")
             let final = JSON.parse(studentsData)
-            for (let i = 0; i < final.length; i++) {
 
-                try {
-                    if (fistName === final[i].firstName && Email === final[i].email) {
-                        // window.location.href = "recover.html";
-                        // Get the current URL query string
-                        let queryParams = new URLSearchParams(window.location.search);
-
-                        // Add or update a query parameter
-                        queryParams.set(fistName, final[i].firstName);
-                        queryParams.set(Email, final[i].email);
-
-                        // Update the URL with the new query parameters
-                        window.history.replaceState({}, '', `${window.location.pathname}?${queryParams.toString()}`);
-
-                        // location.reload();
-
-                        // Construct the new URL with query parameters
-                        // const newURL = `${window.location.pathname}?${queryParams.toString()}`;
-
-                        // Navigate to the new URL
-                        window.location.href = "recover.html";
-
-                    } else {
-                        let invalid = document.getElementById("invalid");
-                        invalid.innerHTML = "A user with this email does not exist"
-                        invalid.style.backgroundColor = "red"
-                        invalid.style.margin = "1rem 2rem 0 3.5rem";
-                        invalid.style.height = "2.5rem"
-                        invalid.style.width = "70%"
-                        invalid.style.fontSize = ".9rem"
-                        invalid.style.fontWeight = "300"
-                        invalid.style.padding = ".7rem .5rem .5rem 1.5rem"
-                        invalid.style.borderRadius = ".2rem"
-                    }
-                } catch (error) {
-                    console.log(error)
-                }
-
+            const fin =final.find(details=>{
+                return details.firstName ===firstName && details.email ===Email 
+            })
+            if(fin){
+                // localStorage.setItem("tour are switch to recover page!!")
+                // var forgetPassword =JSON.parse(localStorage.getItem("forgotPass"))
+                // var forgetPassword =localStorage.getItem("forgetPassword") ? JSON.parse(localStorage.getItem("forgetPassword")) : [];
+                // let passStr = JSON.stringify(forgetPassword);
+                        localStorage.setItem("firstName", fin.firstName)
+                        localStorage.setItem("Email", fin.email)
+                alert("you are eligible");
+                window.location.href = "recover.html";
+            }else{
+                console.log("not same pass");
+                alert("not same")
             }
+
+            // for (let i = 0; i < final.length; i++) {
+
+            //     try {
+            //         if (firstName === final[i].firstName && Email === final[i].email) {
+            //             const forgotPassword = JSON.parse(localStorage.getItem("forgotPass")) || [];
+            //             .push({ firstName: firstName, email: email, password: password, id: id })
+            //             let str = JSON.stringify(studentDetail);
+            //             localStorage.setItem("studentDetail", str)
+
+            //             window.location.href = "recover.html";
+
+            //         } else {
+            //             let invalid = document.getElementById("invalid");
+            //             invalid.innerHTML = "A user with this email does not exist"
+            //             invalid.style.backgroundColor = "red"
+            //             invalid.style.margin = "1rem 2rem 0 3.5rem";
+            //             invalid.style.height = "2.5rem"
+            //             invalid.style.width = "70%"
+            //             invalid.style.fontSize = ".9rem"
+            //             invalid.style.fontWeight = "300"
+            //             invalid.style.padding = ".7rem .5rem .5rem 1.5rem"
+            //             invalid.style.borderRadius = ".2rem"
+            //         }
+            //     } catch (error) {
+            //         console.log(error)
+            //     }
+
+            // }
         }
     </script>
 </body>

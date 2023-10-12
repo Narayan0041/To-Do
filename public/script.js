@@ -1,4 +1,5 @@
 let studentDetail = []
+let onlineDataBase = [];
 
 // -----------------------------------------genrate_password start here------------------------------------------------
 let char = ["@", "#", "&", "!", "#", "%"]
@@ -33,7 +34,7 @@ function register(event) {
     let firstName = document.getElementById("userName").value.trim();
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
-    let firstChar =firstName.charAt(0);
+    let firstChar = firstName.charAt(0);
 
     //for FirstName validation
     if (firstName == "") {
@@ -69,8 +70,8 @@ function register(event) {
 
     //write the condition for register 
     if (firstName && email && password) {
-        let studentDetail = JSON.parse(localStorage.getItem("studentDetail"));
-        var id = studentDetail.length + 1;
+        let studentDetail = localStorage.getItem("studentDetail") ? JSON.parse(localStorage.getItem("studentDetail")) : [];
+        let id = studentDetail.length + 1;
         studentDetail.push({ firstName: firstName, email: email, password: password, id: id })
         let str = JSON.stringify(studentDetail);
         localStorage.setItem("studentDetail", str)
@@ -126,11 +127,39 @@ function login() {
     let studentsData = localStorage.getItem("studentDetail")
     let final = JSON.parse(studentsData)
 
+    // genrate token 
+    let token = Math.floor(Math.random() * 1000);
+
     // check the condition wether the user are exits or not 
     for (let i = 0; i < final.length; i++) {
-        if (final[i].email == LoginEmail && final[i].password == LoginPassword) {
-            window.location.href = "index.html";
-            console.log("Password should match")
+        if (final[i].email === LoginEmail && final[i].password === LoginPassword) {
+            // let onlineDataBase =JSON.parse(localStorage.getItem("onlineDataBase"));
+            // let id = onlineDataBase.length+1;
+            // onlineDataBase.push(token);
+
+            let logeedUser = {
+                loginUserEmail: final[i].email,
+                isCurrentLogin: 0,
+                loginUser: function () {
+                    this.isCurrentLogin = 1;
+                }
+            }
+            logeedUser.loginUser();
+            console.log(onlineDataBase)
+            onlineDataBase.push(logeedUser)
+            let string = localStorage.getItem("currentLogUser");
+            let newString = JSON.parse(string)
+            newString.shift()
+            let currentObj = [
+                ...onlineDataBase,
+                ...newString
+            ]
+            localStorage.setItem("currentLogUser", JSON.stringify(currentObj))
+
+            // let strToken = JSON.stringify(onlineDataBase);
+            // localStorage.setItem("onlineDataBase",strToken);
+             window.location.href = "index.html";
+            // console.log("Password should match")
         }
         else {
             let invalid = document.getElementById("invalid");
@@ -143,7 +172,7 @@ function login() {
             invalid.style.fontWeight = "300"
             invalid.style.padding = ".5rem 1rem"
             invalid.style.borderRadius = ".2rem"
-            console.log("match should not match")
+            // console.log("match should not match")
         }
     }
 
@@ -174,20 +203,36 @@ let window1 = window.addEventListener("load", () => {
         html += "<td>" + 'Action' + "</td>";
         html += "</tr>"
         html += "</thead>";
-        for (let j = 0; j < final.length; j++) {
-            var sno = j + 1;
-            html += "<tr>";
-            html += "<td>" + sno + "</td>";
-            html += "<td>" + final[j].firstName + "</td>";
-            html += "<td>" + final[j].email + "</td>";
-            html += "<td>" + `<button type="button" class="btn btn-danger" onclick="removeItem(${final[j].id})">Remove</button>` + "</td>";
-            html += "</tr>";
+        if (final) {
+
+            for (let j = 0; j < final.length; j++) {
+                var sno = j +1;
+                html += "<tr>";
+                html += "<td>" + sno + "</td>";
+                html += "<td>" + final[j].firstName + "</td>";
+                html += "<td>" + final[j].email + "</td>";
+                html += "<td>" + `<button type="button" class="btn btn-danger" onclick="removeItem(${final[j].id})">Remove</button>` + "</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            students_section.innerHTML = html
+            // noCustomer --------------------------------
+            let noCustomer = document.getElementById("noCustomer");
+            noCustomer.innerHTML = final.length;
         }
-        html += "</table>";
-        students_section.innerHTML = html
-        // noCustomer --------------------------------
-        let Nocustomer = document.getElementById("noCustomer");
-        Nocustomer.innerHTML = final.length;
+
+
+        //get the localStorage of onlineUser..
+        let onlineDataBase = JSON.parse(localStorage.getItem("onlineDataBase"));
+        let onlineUserId = onlineDataBase.length;
+
+        if (onlineUserId) {
+
+            let onLineUser = document.getElementById("onlineUser");
+            onLineUser.innerHTML = onlineUserId;
+        }
+
+        // noOfOnlineUser are.. ---------------------------------
 
     }, 200)
     console.log("page is loaded")
@@ -207,32 +252,29 @@ function removeItem(remove) {
 function removeDataFromLocalStorage(id) {
     const updatedData = final.filter(item => item.id !== id);
     localStorage.setItem('studentDetail', JSON.stringify(updatedData));
-
-
-
 }
 
 //   ---------------------------------------------search-option---------------------------------------------
 
 function searched() {
     let search = document.getElementById("search").value;
-    let SearchUpperCase = search.toUpperCase();
+    let SearchUpperCase = search.toUpperCase();  
     let myTable = document.getElementsByClassName("table")[0]
     let tr = myTable.getElementsByTagName("tr");
     for (let i = 0; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName('td')[1];
-        let email =tr[i].getElementsByTagName('td')[2];
+        let email = tr[i].getElementsByTagName('td')[2];
 
         if (td) {
-            let emailValue =email.textContent || email.innerHTML;
+            let emailValue = email.textContent || email.innerHTML;
             let textValue = td.textContent || td.innerHTML;
-            if (textValue.toUpperCase().indexOf(SearchUpperCase) > -1 || emailValue.toUpperCase().indexOf(SearchUpperCase) >-1) {
-               
+            if (textValue.toUpperCase().indexOf(SearchUpperCase) > -1 || emailValue.toUpperCase().indexOf(SearchUpperCase) > -1) {
+
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none"
+            //   tr[i].innerHTML ="No result"
             }
-            //   if(textValue.toUpperCase())
         }
     }
 

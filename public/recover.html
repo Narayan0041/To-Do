@@ -37,7 +37,7 @@
                 </div>
                 <div class="links">
                     <h3>You go back to <a href="login.html">Login page</a>
-                        </h3>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -62,33 +62,45 @@
                 document.getElementById("conformPassword").style.fontSize = ".9rem";
             }
             if (password == ConformPassword) {
+                
                 // get the value from localStorage and we check the conditions
+                let recoverPasswordEmail = localStorage.getItem("Email");
 
                 let studentsData = localStorage.getItem("studentDetail")
                 let final = JSON.parse(studentsData)
-                for (let i = 0; i < final.length; i++) {
-                    let updatePassword = final[i].password;
-                    ConformPassword == updatePassword;
-                    let success = document.getElementById("message-section");
-                    success.innerHTML = "Your Password has been Changed"
-                    success.style.backgroundColor = "green"
-                    success.style.margin = "1rem 1.7rem 0 3.5rem";
-                    success.style.height = "2.5rem"
-                    success.style.width = "75%";
-                    success.style.color = "white";
-                    success.style.fontSize = "1rem"
-                    success.style.fontWeight = "300"
-                    success.style.padding = ".5rem 1rem"
-                    success.style.borderRadius = ".2rem"
-                    setTimeout(() => {
-                        success.style.display = "none";
-                        clear();
-                    }, 2000)
-                    setTimeout(()=>{
-                        window.location.href ="login.html"
-                    },3500)
+                let recover = final.find(details => {
+                    return details.email === recoverPasswordEmail
+                 
+                })
+                if(recover){
+                    //recover password here
+                 recover.password = ConformPassword;
+                 // recover password end here
+                 
+                 let str = JSON.stringify(final);
+                localStorage.setItem("studentDetail", str)
+                let success = document.getElementById("message-section");
+                success.innerHTML = "Your Password has been Changed"
+                success.style.backgroundColor = "green"
+                success.style.margin = "1rem 1.7rem 0 3.5rem";
+                success.style.height = "2.5rem"
+                success.style.width = "75%";
+                success.style.color = "white";
+                success.style.fontSize = "1rem"
+                success.style.fontWeight = "300"
+                success.style.padding = ".5rem 1rem"
+                success.style.borderRadius = ".2rem"
+                setTimeout(() => {
+                    success.style.display = "none";
+                    clear();
+                }, 2000)
+                setTimeout(()=>{
+                    window.location.href ="login.html"
+                },3500)
                 }
-            } else {
+              
+            }
+            else {
                 alert("password does not match")
             }
             return recover;
