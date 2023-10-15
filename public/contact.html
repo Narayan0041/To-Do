@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protfolio || Shivnarayan Yadav</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&family=Edu+VIC+WA+NT+Beginner:wght@400;500&family=Handjet:wght@100;300&family=Open+Sans:ital,wght@1,500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- -----------------header part start---------- -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-section">
+                <img src="../src/increase.png">
+                <h1>Narayan</h1>
+            </div>
+            <div>
+                <!-- <a href="registerUser.html" class="link">Log out</a> -->
+                <img src="../src/man.png" width="50" class="image imageUser">
+                <div class="user-menu">
+                    <ul>
+                        <div class="profile"><img src="../src/man.png" width="50" class="image imageUser">
+                            <li class="pro">Profile</li>
+                            <div class="profile-conatiner">
+                                <div>
+                                    <div style="margin-left: 8rem;">
+                                        <img src="../src/man.png" class="imageUser" width="40">
+                                        <input type="file" />
+                                    </div>
+                                    <hr class="hr">
+                                    <div class="text-section">
+                                        <label class="nameLabel">Name:</label>
+                                        <h3 class="name">Enter your Name ...</h3>
+                                        <label class="email">Email:</label>
+                                        <h3 class="Email">Enter your email...</h3>
+                                        <label class="mobile">MobileNo:</label><br>
+                                        <input type="text" id="mobileNumber" class="text" placeholder="Mobile Number..">
+                                        <div>
+                                            <button class="btn-save">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="user-menu-links">
+                            <li><a href="">History</a></li>
+                            <li><a hre="">Help</a></li>
+                            <li><a href="">Contact</a></li>
+                            <li class="link logOut">Logout</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- -----------------header part ended---------- -->
+<main>
+    <div class="contactContainer">
+<div class="text-content">
+        <h2 class="heading">Contact <span>US</span></h2>
+        <h3>We're open for any suggestion or just to have a chat</h3>
+       <a href="https://goo.gl/maps/QBoBapMQ6axXJirHA"  class="links"><i class='bx bx-location-plus' ></i>Address: Room No.1 Mahadev yadav chawl sonapur bhandup west Mumbai-400078</a><br>
+        <a href="tel:9322363737"  class="links"><i class='bx bxs-phone' class="link"></i>Phone:+91 9322363737 && 9326040704</a><br>
+        <a href="mailto:yadavshiv0041@gmail.com"  class="links"><i class='bx bxl-telegram' class="link"></i>Email:yadavshiv0041@gmail.com</a>
+         </div>
+         <div class="secondContainer"></div>
+        </div>
+        
+</main>
+
+<script>
+    let user = document.querySelector(".image");
+let user_menu = document.querySelector(".user-menu")
+let logOutBtn = document.querySelector(".link")
+let subContainer = document.querySelector(".contactContainer");
+let profile = document.querySelector(".pro")
+let profileContainer = document.querySelector(".profile-conatiner")
+let toggleMenu = false;
+let onClickContainer = false;
+user.addEventListener("click", () => {
+  user_menu.classList.toggle("active")
+  if (toggleMenu) {
+    document.querySelector(".contactContainer").style = "opacity:1 ";
+    toggleMenu = false;
+    logOutBtn.classList.toggle("active")
+  } else {
+    document.querySelector(".contactContainer").style = "opacity:0.5";
+    toggleMenu = true;
+  }
+})
+window.onscroll = () => {
+  user_menu.classList.remove("active")
+  document.querySelector(".contactContainer").style = "opacity:1 ";
+}
+subContainer.addEventListener("click", () => {
+  user_menu.classList.remove("active")
+  document.querySelector(".contactContainer").style = "opacity:1 ";
+})
+profile.addEventListener("click", () => {
+  profileContainer.classList.toggle("active")
+  // profileContainer.style.display ="block";
+  user_menu.style.display = "hidden";
+  user_menu.classList.toggle("activeFor")
+})
+
+// get the data from localStorage and display the data
+
+let email = document.querySelector(".Email");
+let Name = document.querySelector(".name")
+let loginUser = localStorage.getItem("loginUser")
+let valueOfData = JSON.parse(loginUser)
+for (let i = 0; i < valueOfData.length; i++) {
+  email.innerHTML = valueOfData[0]
+}
+for (let i = 0; i < valueOfData.length; i++) {
+  Name.innerHTML = valueOfData[1]
+}
+
+let logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("loginUser");
+  window.location.href = "index.html"
+})
+
+// image change from file 
+let image = document.querySelectorAll(".imageUser")
+let input = document.querySelector("input")
+
+input.addEventListener("change", () => {
+  // get the data from the localStorage 
+  let finalData =JSON.parse(localStorage.getItem("studentDetail"));
+  if (input.files.length > 0) {
+    // Create a URL for the selected file
+    const imageUrl = URL.createObjectURL(input.files[0]);
+   for(i=0;i<image.length;i++){
+  image[i].src = imageUrl;
+   }
+   finalData["image[i].src"]=imageUrl
+   let str = JSON.stringify(finalData);
+   localStorage.setItem("studentDetail", str)
+  }
+
+})
+
+let saveBtn =document.querySelector(".btn-save");
+saveBtn.addEventListener("click",()=>{
+let mobileNumber =document.getElementById("mobileNumber").value.trim();
+let finalData =JSON.parse(localStorage.getItem("loginUser"));
+let userData =JSON.parse(localStorage.getItem("studentDetail"));
+
+for(let i=0;i<userData.length;i++){
+  if(userData[i].email === finalData[0] && userData[i].firstName === finalData[1] ){
+    userData[i]["mobileNumber"]=mobileNumber;
+    let str = JSON.stringify(userData);
+    localStorage.setItem("studentDetail", str)
+    alert("Your account details has been updated")
+    profileContainer.style.display ="none";
+    user_menu.classList.remove("activeFor")
+
+  }else{
+    console.log("not")
+  }
+}
+
+})
+
+</script>
+</body>
+
+</html>

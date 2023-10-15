@@ -75,10 +75,9 @@
             }
 
             // get the value from localStorage and we check the conditions
-
-            let studentsData = localStorage.getItem("studentDetail")
-            let final = JSON.parse(studentsData)
-
+            
+            let user =localStorage.getItem("studentDetail")
+               let final =JSON.parse(user)
             const fin =final.find(details=>{
                 return details.firstName ===firstName && details.email ===Email 
             })
@@ -96,34 +95,6 @@
                 alert("not same")
             }
 
-            // for (let i = 0; i < final.length; i++) {
-
-            //     try {
-            //         if (firstName === final[i].firstName && Email === final[i].email) {
-            //             const forgotPassword = JSON.parse(localStorage.getItem("forgotPass")) || [];
-            //             .push({ firstName: firstName, email: email, password: password, id: id })
-            //             let str = JSON.stringify(studentDetail);
-            //             localStorage.setItem("studentDetail", str)
-
-            //             window.location.href = "recover.html";
-
-            //         } else {
-            //             let invalid = document.getElementById("invalid");
-            //             invalid.innerHTML = "A user with this email does not exist"
-            //             invalid.style.backgroundColor = "red"
-            //             invalid.style.margin = "1rem 2rem 0 3.5rem";
-            //             invalid.style.height = "2.5rem"
-            //             invalid.style.width = "70%"
-            //             invalid.style.fontSize = ".9rem"
-            //             invalid.style.fontWeight = "300"
-            //             invalid.style.padding = ".7rem .5rem .5rem 1.5rem"
-            //             invalid.style.borderRadius = ".2rem"
-            //         }
-            //     } catch (error) {
-            //         console.log(error)
-            //     }
-
-            // }
         }
     </script>
 </body>

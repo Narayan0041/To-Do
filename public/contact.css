@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --body-color: rgb(203, 203, 219);
+    --secondary-color: rgb(86, 50, 193);
+    --white-color: white;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    transition: all .3s linear;
+}
+
+html {
+    font-size: 62.2%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+}
+
+body {
+    background: rgb(230, 230, 230);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 1rem 5rem;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 5px 7px -1px rgba(0, 0, 0, 1);
+    background-color: rgb(230, 230, 230);
+}
+
+.navbar a {
+    font-size: 1.5rem;
+}
+
+.navbar .link {
+    margin-right: 4rem;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+   color: black;
+    background-color: red;
+}
+.navbar .link.logOut {
+    margin-right: 4rem;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    color: white;
+    background-color: red;
+}
+.navbar .link.logOut:hover{
+    color: white;
+    background-color: red;
+}
+.navbar .link.active {
+    display: block;
+}
+
+.navbar .image {
+    cursor: pointer;
+    position: relative;
+    top: 1.7rem;
+}
+
+.user-menu {
+    position: absolute;
+    right: -110%;
+    top: 10rem;
+    width: 20rem;
+    border-radius: .5rem;
+    padding: 2rem;
+    background-color: white;
+}
+
+.user-menu.active {
+    right: 2rem;
+    transition: .3s linear;
+}
+
+.user-menu.activeFor {
+    right: -20rem;
+    transition: .5s linear;
+}
+
+.profile {
+    margin-left: 31%;
+}
+
+.profile .image {
+    margin-bottom: 2rem;
+}
+
+.profile .pro {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.profile .pro:hover {
+    text-decoration: underline;
+    color: red;
+    transition: .3s linear;
+}
+.profile-conatiner{
+    display: none;
+}
+
+.profile-conatiner.active {
+    position: absolute;
+    display: block;
+    top: 5rem;
+    right: 25rem;
+    padding: 1.5rem 1.5rem;
+    border-radius: .5rem;
+    width: 30rem;
+    background-color: white
+}
+
+.profile-conatiner img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: #dfdfdf;
+    object-fit: cover;
+}
+.btn-save{
+    margin-top: 1.5rem;
+    padding: .7rem 2rem;
+    margin-left: 35%;
+    background-color: rgb(8, 199, 8);
+    border-radius: .5rem;
+    color: var(--white-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.user-menu-links {
+    margin-top: 1.5rem;
+}
+
+.user-menu-links li {
+    margin-bottom: 1rem;
+}
+
+.user-menu-links li:hover {
+    text-decoration: underline;
+    color: red;
+    transition: .3s linear;
+}
+
+.user-menu li {
+    font-size: 2rem;
+    list-style: none;
+}
+
+
+.logo-section {
+    margin-top: .5rem;
+}
+
+.logo-section img {
+    width: 4.3rem;
+}
+
+.imageUser {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-section h1 {
+    position: relative;
+    font-size: 3.5rem;
+    font-weight: 700;
+    bottom: 1.2rem;
+    text-align: center;
+    display: inline-block;
+}
+.hr{
+    margin-top: 1rem;
+    width: 80%;
+    height: .01rem;
+    background-color: gray;
+    border: none;
+    margin-left: 2rem;
+}
+.text-section{
+    margin-top: 1rem;
+}
+.nameLabel,.email,.mobile{
+    font-size: 1.5rem;
+    font-weight:300;
+    height: 3rem;
+}
+.name,.text,.Email{
+    margin-top: .7rem;
+    margin-bottom: .5rem;
+    font-size: 1.6rem;
+    text-decoration: underline;
+}
+
+
+
+
+/* -------------------------contact.css Section Start------------ */
+
+
+.text-content {
+    position: absolute;
+    top: 20vh;
+    left: 20%;
+    height: 60vh;
+    width: 60vw;
+    border-radius: 2rem;
+    z-index: 1000;
+    box-shadow: var(--border-shadow);
+  background: url(../src/gb.png);
+    transition: .3s ease;
+}
+.text-content:hover{
+    transform:scale(1.05);
+}
+
+.text-content h2 {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+}
+
+.text-content .heading span {
+    color: var(--hover-color);
+}
+
+.text-content h3 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    color: black;
+}
+
+.text-content i {
+    font-size: 2rem;
+    color: black;
+    height: 4rem;
+    width: 4rem;
+    text-align: center;
+    padding-top: 0.9rem;
+    background: transparent;
+    border: 2px solid var(--hover-color);
+    border-radius: 50%;
+    margin-top: 2rem;
+    margin-right: 40px;
+    transition: .3s ease;
+}
+
+.text-content .links{
+    font-size: 1.7rem;
+    display: inline-block;
+    padding: 10px;
+    padding-left: 30px;
+    color: var(--secondary-color);
+    transition: .3s ease;
+}
+.text-content i:hover{
+    box-shadow: var(--border-shadow);
+}
+.text-content .links:hover{
+    text-decoration: underline;
+}
+.text-content .links:hover,
+.text-content i:hover{
+
+    transform: scale(1.05);
+}
+
+.secondContainer {
+    position: absolute;
+    top:0;
+    height:100vh;
+    width: 100%;
+    border-radius: 0% 0% 0% 100% / 0% 0% 10% 100%;
+    background-color: var(--background-color);
+}
+
+/* -------------------------contact.css Section Ended------------ */

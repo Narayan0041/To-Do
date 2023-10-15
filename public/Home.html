@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/checklist.png" type="image/x-icon">
+    <title>Todo List || Your Adds and Daily Note</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-section">
+                <img src="../src/increase.png">
+                <h1>Narayan</h1>
+            </div>
+            <div>
+                <!-- <a href="registerUser.html" class="link">Log out</a> -->
+                <img src="../src/man.png" width="50" class="image imageUser">
+                <div class="user-menu">
+                    <ul>
+                        <div class="profile"><img src="../src/man.png" width="50" class="image imageUser">
+                            <li class="pro">Profile</li>
+                            <div class="profile-conatiner">
+                                <div>
+                                    <div style="margin-left: 8rem;">
+                                        <img src="../src/man.png" class="imageUser" width="40">
+                                        <input type="file" />
+                                    </div>
+                                    <hr class="hr">
+                                    <div class="text-section">
+                                        <label class="nameLabel">Name:</label>
+                                        <h3 class="name">Enter your Name ...</h3>
+                                        <label class="email">Email:</label>
+                                        <h3 class="Email">Enter your email...</h3>
+                                        <label class="mobile">MobileNo:</label><br>
+                                        <input type="text" id="mobileNumber" class="text" placeholder="Mobile Number..">
+                                        <div>
+                                            <button class="btn-save">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="user-menu-links">
+                            <li><a href="">History</a></li>
+                            <li><a href="help.html">Help</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li class="link logOut">Logout</li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+    </header>
+    
+    <div class="sub-container">
+        <div class="container">
+            <div class="index-file">
+                <input type="text" id="text" placeholder="Enter Here">
+                <button class="btn" id="btn">Click Me!!</button>
+            </div>
+            <div class="list-Task" id="list-Task">
+                <h1>Your Today <span> Task Are:</span> </h1>
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="start.js"></script>
+<script src="Home.js"></script>
+
+</html>

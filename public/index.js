@@ -18,3 +18,6 @@ btnn.addEventListener("click",function(){
 })
 
 
+let getUserLogin =localStorage.getItem("loginUser");
+console.log(getUserLogin)
+

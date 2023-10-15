@@ -1,5 +1,6 @@
 let studentDetail = []
 let onlineDataBase = [];
+let userLogin = [];
 
 // -----------------------------------------genrate_password start here------------------------------------------------
 let char = ["@", "#", "&", "!", "#", "%"]
@@ -116,70 +117,40 @@ function login() {
         document.getElementById("passwordError").style.marginLeft = "2.7rem";
         document.getElementById("passwordError").style.margintop = "1.2rem";
     }
-    else if (LoginPassword.length <= 8) {
-        document.getElementById("passwordError").innerHTML = "Password should more thane 8 digit";
-        document.getElementById("passwordError").style.color = "red"
-        console.log("Password should more than 8 digit");
-    }
-
 
     // get the data from the localStorage
     let studentsData = localStorage.getItem("studentDetail")
     let final = JSON.parse(studentsData)
 
-    // genrate token 
-    let token = Math.floor(Math.random() * 1000);
+    // // genrate token 
+    // let token = Math.floor(Math.random() * 1000);
 
-    // check the condition wether the user are exits or not 
-    for (let i = 0; i < final.length; i++) {
-        if (final[i].email === LoginEmail && final[i].password === LoginPassword) {
-            // let onlineDataBase =JSON.parse(localStorage.getItem("onlineDataBase"));
-            // let id = onlineDataBase.length+1;
-            // onlineDataBase.push(token);
-
-            let logeedUser = {
-                loginUserEmail: final[i].email,
-                isCurrentLogin: 0,
-                loginUser: function () {
-                    this.isCurrentLogin = 1;
-                }
-            }
-            logeedUser.loginUser();
-            console.log(onlineDataBase)
-            onlineDataBase.push(logeedUser)
-            let string = localStorage.getItem("currentLogUser");
-            let newString = JSON.parse(string)
-            newString.shift()
-            let currentObj = [
-                ...onlineDataBase,
-                ...newString
-            ]
-            localStorage.setItem("currentLogUser", JSON.stringify(currentObj))
-
-            // let strToken = JSON.stringify(onlineDataBase);
-            // localStorage.setItem("onlineDataBase",strToken);
-             window.location.href = "index.html";
-            // console.log("Password should match")
-        }
-        else {
-            let invalid = document.getElementById("invalid");
-            invalid.innerHTML = "A user with this email does not exist"
-            invalid.style.backgroundColor = "red"
-            invalid.style.margin = "1rem 2rem 0 2rem";
-            invalid.style.height = "2.5rem"
-            invalid.style.width = "80%"
-            invalid.style.fontSize = "1rem"
-            invalid.style.fontWeight = "300"
-            invalid.style.padding = ".5rem 1rem"
-            invalid.style.borderRadius = ".2rem"
-            // console.log("match should not match")
-        }
+    let find = final.find(detail => {
+        return detail.email === LoginEmail && detail.password === LoginPassword
+    })
+    if (find) {
+        let userLogin = localStorage.getItem("loginUser") ? JSON.parse(localStorage.getItem("loginUser")) : [];
+        userLogin.push(find.email);
+        userLogin.push(find.firstName);
+        let stringValue = JSON.stringify(userLogin)
+        localStorage.setItem("loginUser", stringValue)
+        alert("you are login")
+        window.location.href="Home.html"
+    } else {
+        let invalid = document.getElementById("invalid");
+                    invalid.innerHTML = "A user with this email does not exist"
+                    invalid.style.backgroundColor = "red"
+                    invalid.style.margin = "1rem 2rem 0 2rem";
+                    invalid.style.height = "2.5rem"
+                    invalid.style.width = "80%"
+                    invalid.style.fontSize = ".9rem"
+                    invalid.style.fontWeight = "300"
+                    invalid.style.padding = ".7rem 1rem .5rem 2rem"
+                    invalid.style.borderRadius = ".2rem"
     }
 
-    console.log("click")
+
 }
-
-
 
 
 
@@ -206,7 +177,7 @@ let window1 = window.addEventListener("load", () => {
         if (final) {
 
             for (let j = 0; j < final.length; j++) {
-                var sno = j +1;
+                var sno = j + 1;
                 html += "<tr>";
                 html += "<td>" + sno + "</td>";
                 html += "<td>" + final[j].firstName + "</td>";
@@ -220,7 +191,6 @@ let window1 = window.addEventListener("load", () => {
             let noCustomer = document.getElementById("noCustomer");
             noCustomer.innerHTML = final.length;
         }
-
 
         //get the localStorage of onlineUser..
         let onlineDataBase = JSON.parse(localStorage.getItem("onlineDataBase"));
@@ -258,7 +228,7 @@ function removeDataFromLocalStorage(id) {
 
 function searched() {
     let search = document.getElementById("search").value;
-    let SearchUpperCase = search.toUpperCase();  
+    let SearchUpperCase = search.toUpperCase();
     let myTable = document.getElementsByClassName("table")[0]
     let tr = myTable.getElementsByTagName("tr");
     for (let i = 0; i < tr.length; i++) {
@@ -273,7 +243,7 @@ function searched() {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none"
-            //   tr[i].innerHTML ="No result"
+                //   tr[i].innerHTML ="No result"
             }
         }
     }

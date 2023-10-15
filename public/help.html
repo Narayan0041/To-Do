@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="shortcut icon" href="/src/code.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="help.css">
+    <title>Todo list || helps Section</title>
+</head>
+
+<body>
+    <!-- -------------------------Contact section---- -->
+    <section>
+        <div class="Contact-section pos" id="CONTACT">
+            <div class="Header-section-contact">
+                <h1>Get In Touch</h1>
+                <img src="https://themewagon.github.io/unfold/images/divider.png">
+            </div>
+            <div class="text-section-contact container">
+                <div class="Form-section">
+                    <form onsubmit="sendEmail();reset(); return false" class="form-group">
+                        <label for="name" class="animated-label name" id="lname">Name</label>
+                        <input type="text" id="name" class="form-control">
+
+                        <label for="email" class="animated-label1" id="lemail">Email</label>
+                        <input type="email" id="name1" class="form-control">
+                        <br>
+                        <label for="textarea" class="text animated-label1" id="ltextarea">Write your Message...</label>
+                        <textarea id="textarea" rows="4" cols="50" class="form-control"></textarea><br>
+                        <input type="button" value="Submit" onclick="sendEmail()">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+         </section>
+         <script>
+            // -------------------------in-form-after-clicking-label-hidden--------------
+document.addEventListener("DOMContentLoaded", function() {
+  const inputField = document.getElementById("name");
+  const label = document.querySelector('.animated-label');
+  const formContainer = document.querySelector('.Form-section');
+  
+  inputField.addEventListener("input", function() {
+    formContainer.classList.toggle('input-filled', inputField.value !== '');
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const inputFieldEmail = document.getElementById("name1");
+  const inputFieldMess = document.getElementById("textarea");
+  const label = document.querySelector('.animated-label1');
+  const formContainer = document.querySelector('.Form-section');
+  inputFieldMess.addEventListener("input", function() {
+    formContainer.classList.toggle('input-filled', inputFieldMess.value !== '');
+  });
+  inputFieldEmail.addEventListener("input", function() {
+    formContainer.classList.toggle('input-filled', inputFieldEmail.value !== '');
+  });
+});
+
+// ----------------------------smptjs----------------
+function sendEmail() {
+  let name =document.getElementById("name");
+  let email =document.getElementById("name1");
+  let message =document.getElementById("textarea");
+  if(name && email && message ){
+    Email.send({
+      Host: "smtp.elasticemail.com",
+      Username: "ganeshyadav00041@gmail.com",
+      Password: "2EEF1A5457F84E967B5CE15741DCF6380DE3",
+      To: 'ganeshyadav00041@gmail.com',
+      From: document.getElementById("name1").value,
+      Subject: "New contact Form Enquiry",
+      Body: "And this is the body"
+    }).then(
+      message => alert("Your respone IS sended To Shivnarayan yadav")
+    );
+  clear();
+  }else{
+    alert("Fill all the input then You send the Message !!")
+  }
+  }
+  
+function clear(){
+  let name =document.getElementById("name").value="";
+  let email =document.getElementById("name1").value="";
+  let message =document.getElementById("textarea").value="";
+}
+
+         </script>
+         </body>
+         </html>

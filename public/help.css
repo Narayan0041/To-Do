@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+    --font-color: white;
+    --second-font-color: #bfb8b8;
+    --hover-color: rgb(26, 186, 192);
+    --second-color: #E5591F;
+    --third-color: #dc3545;
+    --body-color: rgb(15, 15, 15);
+    --span-color: #861623;
+
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all .3s linear;
+
+}
+
+html {
+    font-size: 62.2%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+    background: var(--body-color);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: rgb(230, 230, 230);
+}
+
+.zindex {
+    z-index: 1000;
+}
+
+.pos {
+    margin: 0 20rem;
+}
+
+/* -------------contact section--------------- */
+.Contact-section {
+    position: relative;
+    padding-top: 10rem;
+    height: 80vh;
+    background: url(../src/gb.png);
+}
+
+.Header-section-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header-section-contact h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--font-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Header-section-contact img {
+    margin-top: 2rem;
+    width: 8rem;
+}
+
+.Form-section {
+    flex: 2;
+    margin-top: 10rem;
+}
+
+.Form-section input {
+    color: var(--font-color);
+    width: 25rem;
+    font-size: 2rem;
+    margin-right: 3rem;
+    border-bottom: 1px solid var(--second-font-color);
+    background-color: transparent;
+}
+
+.Form-section label.name {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 0;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    font-weight: 900;
+    position: absolute;
+    top: 16rem;
+    right: 108rem;
+    transition: .3s all ease;
+}
+
+.Form-section label {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 0;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    font-weight: 900;
+    position: absolute;
+    top: 16rem;
+    right: 80rem;
+    transition: .3s all ease;
+}
+
+.Form-section label.text {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 0;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    font-weight: 900;
+    position: absolute;
+    top: 25rem;
+    right: 95rem;
+    transition: .3s all ease;
+}
+
+.Form-section textarea {
+    font-size: 2rem;
+    color: var(--font-color);
+    margin-top: 5rem;
+    border-bottom: 1px solid var(--second-font-color);
+    background-color: transparent;
+}
+
+.text-section-contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Form-section button {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: var(--font-color);
+    height: 5rem;
+    width: 15rem;
+    border-radius: 3rem;
+    border: 2px solid var(--second-font-color);
+    background-color: transparent;
+}
+
+.Form-section button:hover {
+
+    border: 2px solid var(--font-color);
+}
+
+.right-contact {
+    flex: 1;
+    padding-left: 5rem;
+}
+
+.right-contact h3 {
+    margin-top: 3rem;
+    color: var(--second-font-color);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.right-contact a {
+    margin-top: 2rem;
+    font-weight: 100;
+    font-size: 1.8rem;
+    color: var(--font-color);
+}
+  .animated-label {
+    position: absolute;
+    transform-origin: top left;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  .animated-label1{
+    position: absolute;
+    transform-origin: top left;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  .input-filled .animated-label1{
+    transform: translateY(-20px) scale(1);
+    opacity: 0;
+  }
+  
+  .input-filled .animated-label {
+    transform: translateY(-20px) scale(1);
+    opacity: 0;
+  }
+  input[type=button]{
+    /* background-color: var(--third-color); */
+    color: var(--font-color);
+    margin-top: 2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 2.5rem;
+    border: 2px solid var(--second-font-color);
+    width: 15rem;
+    cursor: pointer;
+  }
