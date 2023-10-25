@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+:root {
+    --font-color: white;
+    --second-font-color: #bfb8b8;
+    --hover-color: rgb(26, 186, 192);
+    --second-color: #E5591F;
+    --third-color: #dc3545;
+    --body-color: rgb(15, 15, 15);
+    --span-color: #861623;
+
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all .3s linear;
+
+}
+
+html {
+    font-size: 62.2%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7px;
+    overflow-x: hidden;
+    background: var(--body-color);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: rgb(230, 230, 230);
+}
+
+body{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background: url(../src/gb.png);
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.task_container{
+   height: 80vh;
+    background-color: white;
+    width: 70vw;
+}
+.task_container h1{
+    display: flex;
+    justify-content: center;
+}
+.task-text-container{
+    margin-top: 5rem;
+}
+.task-text-container ul{
+    font-size: 1rem;
+}

@@ -78,6 +78,7 @@ function register(event) {
         localStorage.setItem("studentDetail", str)
         alert("You are the Register Succesfully")
         clear()
+        window.location.href="login.html"
     }
     console.log("You are the Register Succesfully")
 }
@@ -121,9 +122,6 @@ function login() {
     // get the data from the localStorage
     let studentsData = localStorage.getItem("studentDetail")
     let final = JSON.parse(studentsData)
-
-    // // genrate token 
-    // let token = Math.floor(Math.random() * 1000);
 
     let find = final.find(detail => {
         return detail.email === LoginEmail && detail.password === LoginPassword
@@ -243,7 +241,6 @@ function searched() {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none"
-                //   tr[i].innerHTML ="No result"
             }
         }
     }

@@ -3,12 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="history.css">
     <title>Todo || History page</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="task_container">
+            <h1>Your Task are:</h1>
+            <div class="task-text-container">
+                <ul class="result"></ul>
+
+            </div>
+        </div>
+    </div>
 </body>
 <script>
-    
+    let result =document.querySelector(".result")
+   let UserTaskData = JSON.parse(localStorage.getItem("userStoreData"));
+    window.addEventListener("load", () => {
+    var html = "<table  class='table'>"
+    setTimeout(() => {
+        html += "<thead id='table'>";
+        html += "<tr>";
+        html += "<td>" + 'Task.' + "</td>";
+        // html += "<td>" + 'Action' + "</td>";
+        html += "</tr>"
+        html += "</thead>";
+        if (UserTaskData) {
+
+            for (let j = 0; j < UserTaskData.length; j++) {
+                // console.log(UserTaskData[j])
+            var id = UserTaskData.length 
+                var sno = j + 1;
+                html += "<tr>";
+                html += "<td>" + UserTaskData[j] + "</td>";
+                // html += "<td>" + `<button type="button" class="btn btn-danger" onclick="removeItem(${UserTaskData[j].id})">Remove</button>` + "</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            result.innerHTML = html
+        }
+    })
+
+
+}, 200)
+
+// -------------------------------remove-task-----------------
+function removeItem(remove) {
+    let id = remove;
+    let conf = confirm("Do you want Delete the user");
+    if (conf) {
+        removeDataFromLocalStorage(id);
+        console.log("click hu remove btn", id)
+        document.location.reload()
+    }
+}
+
+// Function to remove data from localStorage
+function removeDataFromLocalStorage(id) {
+    const updatedData = UserTaskData.filter(item => item.id !== id);
+    localStorage.setItem('UserStoreData', JSON.stringify(updatedData));
+}
+
+
 </script>
 </html>
